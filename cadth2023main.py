@@ -24,10 +24,11 @@ def pages_scrap():
             start = zlec_start_date(soup)
             project_page_scrap = simple_page_scrap(links)
 
+            #cadth don't have these same process pages - they have differencies. Below code check if lengh of scraped list are identicall. If not - there must by error
             if (len(brands) and len(substa) and len(indica) and len(recommend) and len(end) and len(start)) == len(links):
-                print("Długości list są ok")
+                print("List are ok")
             else:
-                print('Błąd')
+                print('Error')
                 print(f"Brandy: {len(brands)}")
                 print(f"Linki: {len(links)}")
                 print(len(substa))
