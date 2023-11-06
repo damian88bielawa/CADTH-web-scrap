@@ -228,7 +228,10 @@ def simple_page_scrap(links):
         sub_acc_date = soup.find('th', text=lambda t: t in ('Submission accepted', 'Submission Deemed Complete'))
         #companies = []
         if sub_acc_date is not None:
-            page['Submission accepted date'] = sub_acc_date.find_next('td').text
+            try:
+                page['Submission accepted date'] = sub_acc_date.find_next('td').text
+            except:
+                page['Submission accepted date'] = ''
         else:
             try:
                 page['Submission accepted date'] = soup.find('div',
@@ -241,7 +244,10 @@ def simple_page_scrap(links):
         rev_init = soup.find('th', text='Review initiated')
         #companies = []
         if rev_init is not None:
-            page['Review initiated'] = rev_init.find_next('td').text
+            try:
+                page['Review initiated'] = rev_init.find_next('td').text
+            except:
+                page['Review initiated'] = ''
         else:
             try:
                 page['Review initiated'] = soup.find('div',
@@ -253,7 +259,10 @@ def simple_page_scrap(links):
         #First Draft review
         draft_rev = soup.find('th', text=lambda t: t in ('Draft CADTH review report(s) sent to sponsor', 'Initial Recommendation', 'Draft CADTH review report(s) provided to sponsor for comment'))
         if draft_rev is not None:
-            page['Draft review'] = draft_rev.find_next('td').text
+            try:
+                page['Draft review'] = draft_rev.find_next('td').text
+            except:
+                page['Draft review'] = ''
         else:
             try:
                 page['Draft review'] = soup.find('div',
@@ -265,7 +274,10 @@ def simple_page_scrap(links):
         #First CADTH body meeting
         cadth_meeting = soup.find('th', text=lambda t: t in ('pERC Meeting', 'Expert committee meeting (initial)', 'Canadian Drug Expert Committee (CDEC) meeting', 'Expert Committee meeting (initial)'))
         if cadth_meeting is not None:
-            page['First CADTH body meeting'] = cadth_meeting.find_next('td').text
+            try:
+                page['First CADTH body meeting'] = cadth_meeting.find_next('td').text
+            except:
+                page['First CADTH body meeting'] = ''
         else:
             try:
                 page['First CADTH body meeting'] = soup.find('div',
@@ -278,7 +290,10 @@ def simple_page_scrap(links):
         #CADTH final recommendation
         final_recomendation = soup.find('th', text=lambda t: t in ('CDEC Final Recommendation posted', 'Final Recommendation posted', 'Final Recommendation Issued', 'Final recommendation posted', 'CDEC Final recommendation posted'))
         if final_recomendation is not None:
-            page['Final recommendation'] = final_recomendation.find_next('td').text
+            try:
+                page['Final recommendation'] = final_recomendation.find_next('td').text
+            except:
+                page['Final recommendation'] = ''
         else:
             try:
                 page['Final recommendation'] = soup.find('div',
