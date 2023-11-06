@@ -289,7 +289,7 @@ def simple_page_scrap(links):
 
         # --------------
         #document links + document link name + RECOMENDATION TEXT FROM PDF
-        documents_tag = soup.find_all('a', class_='link--brand')
+        documents_tag = soup.find_all('a', class_='project-file')
 
         if documents_tag is not None:
             document_links = []
@@ -307,7 +307,7 @@ def simple_page_scrap(links):
                         #ap_link = []
                         #ap_link.append(pdf_downloader(url))
                         document_link_text = link.find('span',
-                                                       class_='link__text link__text--reversed').text.strip().replace(
+                                                       class_='doc-title').text.strip().replace(
                             '\n', '')
                         ass_links['link name'] = document_link_text
                         #ass_links['Recommendation text'] = ap_link
